@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.4
+.VERSION 1.5
 
 .GUID 512fb058-2d8a-4e12-9fee-3f14f7d4ee46
 
@@ -27,7 +27,29 @@
 
 .RELEASENOTES
 
+.PARAMETER name
+Name of new index [Default: copy_solrindex_index for testing] (if no solr path provided and not current working directory must be full path)
 
+.PARAMETER schema
+Name of schema to copy [default: sitecore_master_index]
+
+.PARAMETER solr
+Solr path - use this with PersistForCurrentUser and run from anywhere, otherwise working directory must be SOLR
+
+.PARAMETER PersistForCurrentUser
+Save solr path to env var for user
+
+.PARAMETER Force
+Force - overwrite if index already exists
+
+.EXAMPLE
+PS> .\Copy-SolrIndex 'new_index' -solr 'c:\solr\8.1.1\solr\server' -PersistForCurrentUser
+
+.EXAMPLE
+PS> .\Copy-SolrIndex 'new_index'
+
+.EXAMPLE
+PS> .\Copy-SolrIndex 'new_index' 'sitecore_web_index'
 #>
 
 <# 
@@ -41,15 +63,15 @@
 #####################################################
 [CmdletBinding(SupportsShouldProcess)]
 Param(
-	# name of new index
+	# Name of new index
 	[Parameter(Mandatory = $false, position=0)] [string]$name,
-	# name of schema to copy [default: sitecore_master_index]
+	# Name of schema to copy [default: sitecore_master_index]
 	[Parameter(Mandatory = $false, position=1)] [string]$schema = "sitecore_master_index",
-	# solr path - use this with PersistForCurrentUser and run from anywhere, otherwise working directory must be SOLR
+	# Solr path - use this with PersistForCurrentUser and run from anywhere, otherwise working directory must be SOLR
 	[Parameter(Mandatory = $false)] [string]$solr,
 	# Save solr path to env var for user
 	[Parameter(Mandatory = $false)] [switch]$PersistForCurrentUser,
-	# force - overwrite if index already exists
+	# Force - overwrite if index already exists
 	[Parameter(Mandatory = $false)] [switch]$Force
 )
 begin {
