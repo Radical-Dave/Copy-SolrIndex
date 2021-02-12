@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.2
+.VERSION 1.3
 
 .GUID 512fb058-2d8a-4e12-9fee-3f14f7d4ee46
 
@@ -101,13 +101,13 @@ process {
 					EXIT 1
 				} else {
 					Write-Verbose "$dest already exists removing."
-					Remove-Item $dest -Recurse -Force
+					Remove-Item $dest -Recurse -Force | Out-Null
 				}
 			}
 
 			if (!(Test-Path $dest)) {
 				Write-Verbose "Creating destination: $dest"
-				New-Item -Path $dest -ItemType Directory
+				New-Item -Path $dest -ItemType Directory | Out-Null
 			}
 
 			Write-Verbose "Copying schema: $schema"
