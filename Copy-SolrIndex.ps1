@@ -1,15 +1,15 @@
 
 <#PSScriptInfo
 
-.VERSION 1.1
+.VERSION 1.2
 
 .GUID 512fb058-2d8a-4e12-9fee-3f14f7d4ee46
 
-.AUTHOR RadicalDave
+.AUTHOR David Walker, Sitecore Dave, Radical Dave
 
-.COMPANYNAME RadicalDave
+.COMPANYNAME David Walker, Sitecore Dave, Radical Dave
 
-.COPYRIGHT RadicalDave
+.COPYRIGHT David Walker, Sitecore Dave, Radical Dave
 
 .TAGS powershell file io solr sitecore
 
@@ -54,7 +54,6 @@ Param(
 )
 begin {
 	$ErrorActionPreference = 'Stop'
-	$VerbosePreference = "Continue"
 	$PSScriptName = ($MyInvocation.MyCommand.Name.Replace(".ps1",""))
 	$PSCallingScript = if ($MyInvocation.PSCommandPath) { $MyInvocation.PSCommandPath | Split-Path -Parent } else { $null }
 	Write-Verbose "$PSScriptName $name $schema called by:$PSCallingScript"
