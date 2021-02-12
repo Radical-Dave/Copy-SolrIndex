@@ -27,6 +27,13 @@
 
 .RELEASENOTES
 
+#>
+
+<# 
+
+.DESCRIPTION 
+ Copy Solr Index by schema [default: sitecore-Master_index]
+
 .PARAMETER name
 Name of new index [Default: copy_solrindex_index for testing] (if no solr path provided and not current working directory must be full path)
 
@@ -50,12 +57,6 @@ PS> .\Copy-SolrIndex 'new_index'
 
 .EXAMPLE
 PS> .\Copy-SolrIndex 'new_index' 'sitecore_web_index'
-#>
-
-<# 
-
-.DESCRIPTION 
- Copy Solr Index by schema [default: sitecore-Master_index]
 
 #> 
 #####################################################
