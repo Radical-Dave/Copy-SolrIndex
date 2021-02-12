@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.3
+.VERSION 1.4
 
 .GUID 512fb058-2d8a-4e12-9fee-3f14f7d4ee46
 
@@ -97,10 +97,10 @@ process {
 
 			if (Test-Path $dest) {
 				if (!$Force) {
-					Write-Error "ERROR $dest already exists"
+					Write-Error "ERROR $dest already exists. Use -Force to overwrite."
 					EXIT 1
 				} else {
-					Write-Verbose "$dest already exists removing."
+					Write-Verbose "$dest already exist. -Force used - removing."
 					Remove-Item $dest -Recurse -Force | Out-Null
 				}
 			}
@@ -111,7 +111,7 @@ process {
 			}
 
 			Write-Verbose "Copying schema: $schema"
-			Copy-Item -Path $path -Destination $dest -PassThru
+			Copy-Item -Path $path -Destination $dest -PassThru | Out-Null
 
 			$propPath = "$dest\core.properties"
 			if (Test-Path $propPath) {
