@@ -1,7 +1,10 @@
-
+#Set-StrictMode -Version Latest
+#####################################################
+# Copy-SolrIndex
+#####################################################
 <#PSScriptInfo
 
-.VERSION 1.5
+.VERSION 1.6
 
 .GUID 512fb058-2d8a-4e12-9fee-3f14f7d4ee46
 
@@ -50,17 +53,17 @@ Save solr path to env var for user
 Force - overwrite if index already exists
 
 .EXAMPLE
-PS> .\Copy-SolrIndex 'new_index' -solr 'c:\solr\8.1.1\solr\server' -PersistForCurrentUser
+PS> .\Copy-SolrIndex 'new_index'
 
 .EXAMPLE
-PS> .\Copy-SolrIndex 'new_index'
+PS> .\Copy-SolrIndex 'new_index' -solr 'c:\solr\8.1.1\solr\server' -PersistForCurrentUser
 
 .EXAMPLE
 PS> .\Copy-SolrIndex 'new_index' 'sitecore_web_index'
 
 #> 
 #####################################################
-#  Copy-SolrIndex
+# Copy-SolrIndex
 #####################################################
 [CmdletBinding(SupportsShouldProcess)]
 Param(
